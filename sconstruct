@@ -541,3 +541,8 @@ env.Alias('appx',[installed_appx_storeSubmission,installed_appx_sideLoadable])
 env.Default(dist)
 
 env.SConscript("tests/sconscript", exports=["env", "sourceDir", "pot"])
+
+userGuidePot = env.Command(outputDir.File("userGuide.pot"), "user_docs\\en\\userGuide.md",
+	[[".\.venv\\scripts\\md2po", "${SOURCE}", "-s", "-p", "${TARGET}", "-q", "--wrapwidth", "0", "--md-encoding", "utf-8", "--po-encoding", "utf-8"]],
+)
+env.Alias("userGuidePot", userGuidePot)

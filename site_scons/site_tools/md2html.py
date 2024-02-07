@@ -168,12 +168,8 @@ def md2html_actionFunc(
 		)
 	)
 
-	if lang == "en":
-		potPath = source[0].abspath.replace('.md', '.pot')
-		poPath = None
-	else:
-		potPath = None
-		poPath = source[0].abspath.replace('.md', '.po')
+	potPath = source[0].abspath.replace('.md', '.pot')
+	poPath = source[0].abspath.replace('.md', '.po')
 	docName = target[0].name
 	htmlOutput = _generateSanitizedHTML(mdStr, docName, isKeyCommands=isKeyCommands, potPath=potPath, poPath=poPath)
 	# Make next write append at end of buffer
